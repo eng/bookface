@@ -16,9 +16,6 @@ class App extends Component {
       ],
       newComment: ""
     }
-    this.likeClicked = this.likeClicked.bind(this);
-    this.handleCommentInputChanged = this.handleCommentInputChanged.bind(this);
-    this.handleCommentEnterKey = this.handleCommentEnterKey.bind(this);
   }
 
   handleCommentInputChanged(event) {
@@ -73,7 +70,7 @@ class App extends Component {
             {this.state.body}
           </div>
           <div className="buttons">
-            <a href="javascript:;" onClick={this.likeClicked}><i className="fa fa-thumbs-up"></i> Like</a>
+            <a href="javascript:;" onClick={() => this.likeClicked()}><i className="fa fa-thumbs-up"></i> Like</a>
             <a href="javascript:;"><i className="fa fa-comment"></i> Comment</a>
           </div>
           <div className="likes">
@@ -88,8 +85,8 @@ class App extends Component {
             <input type="text" 
                    placeholder="Write a comment..." 
                    value={this.state.newComment} 
-                   onChange={this.handleCommentInputChanged}
-                   onKeyPress={this.handleCommentEnterKey} />
+                   onChange={(event) => this.handleCommentInputChanged(event)}
+                   onKeyPress={(event) => this.handleCommentEnterKey(event)} />
           </div>
         </div>
       </div>
